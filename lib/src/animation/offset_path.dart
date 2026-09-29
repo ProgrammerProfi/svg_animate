@@ -48,11 +48,7 @@ class OffsetPath {
     final NumberListValue? angle = NumberListValue.parse(
       rotate.replaceFirst('auto', '').replaceFirst('reverse', '').trim(),
     );
-    return OffsetPath._(
-      path,
-      tracksPath,
-      (angle?.numbers.first ?? 0) + (reversed ? 180 : 0),
-    );
+    return OffsetPath._(path, tracksPath, (angle?.numbers.first ?? 0) + (reversed ? 180 : 0));
   }
 
   final MotionPath _path;
