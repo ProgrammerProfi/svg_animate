@@ -136,6 +136,8 @@ void main() {
       ('reverse', '180'),
       ('reverse 30deg', '210'),
       ('reverse -30deg', '150'),
+      ('30deg', '30'),
+      ('-30deg', '-30'),
     ]) {
       test('reads offset-rotate: $rotate', () {
         final AnimatedSvgDocument document = AnimatedSvgDocument.parse(
