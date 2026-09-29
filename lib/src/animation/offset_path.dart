@@ -42,14 +42,15 @@ class OffsetPath {
     }
 
     final String rotate = declarations['offset-rotate']?.trim() ?? 'auto';
-    final bool tracksPath = rotate == 'auto' || rotate.startsWith('auto ');
-    final bool reversed = rotate == 'reverse' || rotate.startsWith('auto ') && rotate.contains('-');
+    final bool isAuto = rotate == 'auto' || rotate.startsWith('auto ');
+    final bool reversed = rotate == 'reverse' || rotate.startsWith('reverse ');
+    final bool tracksPath = isAuto || reversed;
     final NumberListValue? angle = NumberListValue.parse(
       rotate.replaceFirst('auto', '').replaceFirst('reverse', '').trim(),
     );
     return OffsetPath._(
       path,
-      tracksPath || rotate == 'reverse',
+      tracksPath,
       (angle?.numbers.first ?? 0) + (reversed ? 180 : 0),
     );
   }
